@@ -10,8 +10,7 @@ class AddProduct extends StatefulWidget {
 }
 
 class _AddProductState extends State<AddProduct> {
-  ApiService apiService = ApiService();
-
+  final ApiService apiService = ApiService();
   final _formKey = GlobalKey<FormState>();
 
   String title = '';
@@ -19,17 +18,19 @@ class _AddProductState extends State<AddProduct> {
   String description = '';
   String image = '';
   String category = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Add Product")),
+      appBar: AppBar(title: const Text("Add Product")),
       body: Padding(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Form(
+          key: _formKey, // ✅ added key
           child: Column(
             children: [
               TextFormField(
-                decoration: InputDecoration(labelText: 'Title'),
+                decoration: const InputDecoration(labelText: 'Title'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter a title';
@@ -41,7 +42,7 @@ class _AddProductState extends State<AddProduct> {
                 },
               ),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Price'),
+                decoration: const InputDecoration(labelText: 'Price'),
                 keyboardType: TextInputType.number,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -54,7 +55,7 @@ class _AddProductState extends State<AddProduct> {
                 },
               ),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Description'),
+                decoration: const InputDecoration(labelText: 'Description'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter a description';
@@ -66,7 +67,7 @@ class _AddProductState extends State<AddProduct> {
                 },
               ),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Image URL'),
+                decoration: const InputDecoration(labelText: 'Image URL'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter an image URL';
@@ -78,7 +79,7 @@ class _AddProductState extends State<AddProduct> {
                 },
               ),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Category'),
+                decoration: const InputDecoration(labelText: 'Category'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter a category';
@@ -89,7 +90,7 @@ class _AddProductState extends State<AddProduct> {
                   category = value!;
                 },
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
@@ -106,7 +107,7 @@ class _AddProductState extends State<AddProduct> {
                     });
                   }
                 },
-                child: Text('Add Product'),
+                child: const Text('Add Product'),
               ),
             ],
           ),

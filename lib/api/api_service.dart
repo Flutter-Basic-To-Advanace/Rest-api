@@ -28,4 +28,23 @@ class ApiService {
       throw Exception("Failed to fetch products");
     }
   }
+
+  //fetch a single product from the API
+  Future<Product> fetchSingleProduct(int id) async {
+    final String url = "https://fakestoreapi.com/products/$id";
+
+    try {
+      final response = await http.get(Uri.parse(url));
+      if (response.statusCode == 200) {
+        Product product = Product.fromJson(json.decode(response.body));
+        return product;
+      } else {
+        print("Failed to fetch produt.Status code : ${response.body}");
+        throw Exception("Failed to fetch product");
+      }
+    } catch (error) {
+      print("Error : $error");
+      throw Exception("Failed to fetch the product");
+    }
+  }
 }

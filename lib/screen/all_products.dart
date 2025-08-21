@@ -1,5 +1,6 @@
 import 'package:app_routing/api/api_service.dart';
 import 'package:app_routing/models/product_model.dart';
+import 'package:app_routing/screen/single_product.dart';
 import 'package:flutter/material.dart';
 
 class AllProducts extends StatelessWidget {
@@ -46,6 +47,15 @@ class AllProducts extends StatelessWidget {
                         height: 100,
                         fit: BoxFit.cover,
                       ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                SingleProduct(productId: product.id!),
+                          ),
+                        );
+                      },
                     ),
                   );
                 },

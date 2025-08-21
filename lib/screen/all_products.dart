@@ -1,5 +1,6 @@
 import 'package:app_routing/api/api_service.dart';
 import 'package:app_routing/models/product_model.dart';
+import 'package:app_routing/screen/add_product.dart';
 import 'package:app_routing/screen/single_product.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,15 @@ class AllProducts extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("All Products")),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => AddProduct()),
+          );
+        },
+        child: Icon(Icons.add),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(10),
         child: FutureBuilder<List<Product>>(
